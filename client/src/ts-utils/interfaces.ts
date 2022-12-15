@@ -8,7 +8,7 @@ interface PostItem {
 interface PostComment {
     title: string,
     description: string,
-    itemId: string,
+    commentId: string,
     owner: string,
     _id?: string,
 }
