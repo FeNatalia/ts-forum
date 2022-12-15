@@ -40,6 +40,14 @@ app.post("/api/posts", async (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
+app.post("/api/posts/:id", async (req, res) => {
+  const comment = new Comment(req.body);
+  comment
+    .save()
+    .then((result) => res.status(201).json(result))
+    .catch((err) => res.json({ error: err.message }));
+});
+
 app.get("/api/posts/:id", async (req, res) => {
   const { id } = req.params;
   const post = await Post.findOne({ postId: id }).then((result) => {
