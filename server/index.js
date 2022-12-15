@@ -55,6 +55,13 @@ app.get("/api/posts/:id", async (req, res) => {
   });
 });
 
+app.get("/api/posts/:id/comments", async (req, res) => {
+  const { id } = req.params;
+  const post = await Comment.find({ owner: id }).then((result) => {
+    return res.json(result);
+  });
+});
+
 app.get("/api", (_req, res) => {
   return res.json({ message: "You have reached the Forum Api" });
 });
